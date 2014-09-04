@@ -209,14 +209,14 @@
             // if it's the computer's first move, take the middle square
             if( this.users.pc.length == 0 ) {
                 if( !this.helper.isTaken( this.squares[4] ) ) {
-                    this.click( this.squares[4].elem );
+                    this.click( this.squares[4].elem, true );
                     return;
                 }
                 else {
                     var bestChoices = [1,3,7,9];
                     for( var b = 0; b < bestChoices.length; b++ ) {
                         if( !this.helper.isTaken( this.squares[b] ) ) {
-                            this.click( this.squares[b].elem );
+                            this.click( this.squares[b].elem, true );
                             return;
                         }
                     }
@@ -297,14 +297,14 @@
             for( var i = 0; i < line.length; i++ ) {
                 var index = line[i] - 1;
                 if( !this.helper.isTaken( this.squares[index] ) ) {
-                    this.click( this.squares[index].elem );
+                    this.click( this.squares[index].elem, true );
                     return;
                 }
             }
         },
 
         // handling methods
-        click: function( elem ) {
+        click: function( elem, isPC ) {
             if( elem.getAttribute( 'checked' ) ) {
                 console.log( 'Square is already checked.' );
                 return;
@@ -333,8 +333,13 @@
             if( this.over !== 0 ) {
                 this.showOverlay();
             }
+            else {
+                this.switchUser();
 
-            this.switchUser();
+                if( !isPC ) {
+                    this.findBest();
+                }
+            }
         },
 
         showOverlay: function() {
