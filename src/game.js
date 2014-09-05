@@ -196,11 +196,16 @@
                 'style': 'display: none;'
             });
 
+            this.resultBox = new Div({
+                'class': 'result'
+            });
+
             this.resetKey = new Div({
                 'class': 'reset'
             }, 'Reset');
 
             this.container.appendChild( this.overlay );
+            this.overlay.appendChild( this.resultBox );
             this.overlay.appendChild( this.resetKey );
         },
 
@@ -344,12 +349,12 @@
             var isWin = this.helper.checkWin( this.users[this.currentUser] );
 
             if( isWin ) {
-                console.log( 'Winner is: ' + this.currentUser );
+                this.resultBox.innerHTML = 'Winner is: ' + this.currentUser;
                 this.over = this.currentUser;
             }
             else {
                 if ( this.helper.checkOver( this.squares ) ) {
-                    console.log( 'Game over. It\'s a draw.' );
+                    this.resultBox.innerHTML = 'Game over. It\'s a draw.';
                     this.over = 'draw';
                 }
             }
