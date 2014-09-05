@@ -214,10 +214,9 @@
                     return;
                 }
                 else {
-                    var bestChoices = [1,3,7,9];
-                    for( var b = 0; b < bestChoices.length; b++ ) {
-                        if( !this.helper.isTaken( this.squares[b] ) ) {
-                            this.click( this.squares[b].elem, true );
+                    for( var b = 0; b < corners.length; b++ ) {
+                        if( !this.helper.isTaken( this.squares[corners[b]] ) ) {
+                            this.click( this.squares[corners[b]].elem, true );
                             return;
                         }
                     }
@@ -259,6 +258,15 @@
                 if( !can_win ) {
                     var choices = [];
                     var user_win = false;
+
+                    // check if user has taken 2 corners and fuck him up with a middle square
+                    if( this.users.user.length == 2 ) {
+                        if( corners.indexOf( this.users.user[0] ) > -1 && corners.indexOf( this.users.user[1] ) > -1 ) {
+                            this.click( this.squares[1].elem, true );
+
+                            return;
+                        }
+                    }
 
                     for( var u = 0; u < WinConditions.length; u++ ) {
                         var matches = 0;
