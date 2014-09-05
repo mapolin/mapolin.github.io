@@ -20,6 +20,7 @@
         [4, 5, 6],
         [7, 8, 9]
     ];
+    var corners = [1, 3, 7, 9];
     var symbols = {
         user: 'X',
         pc: 'O'
@@ -233,7 +234,7 @@
                     for( var i = 0; i < this.users.pc.length; i++ ) {
                         if( WinConditions[l].indexOf( this.users.pc[i] ) !== -1 ) {
                             matches++;
-                            can_win = (matches == 2);
+                            can_win = (matches == 2) && this.helper.checkLine( WinConditions[l], this.squares, 'pc' );
 
                             lines.push({
                                 line: WinConditions[l],
@@ -242,7 +243,9 @@
                             });
 
                             if( can_win ) {
-                                can_win = WinConditions[i];
+                                this.takeEmptySquare( WinConditions[l] );
+
+                                return;
                             }
                         }
                     }
@@ -294,8 +297,21 @@
         },
 
         takeEmptySquare: function( line ) {
+            // squares 1, 3, 7, 9 are checked with priority
+            for( var c = 0; c < corners.length; c++ ) {
+                var match = line.indexOf( corners[c] );
+
+                if( match > -1 ) {
+                    if( !this.helper.isTaken( this.squares[line[match] - 1] ) ) {
+                        this.click( this.squares[line[match] - 1].elem, true );
+                        return;
+                    }
+                }
+            }
+
             for( var i = 0; i < line.length; i++ ) {
                 var index = line[i] - 1;
+
                 if( !this.helper.isTaken( this.squares[index] ) ) {
                     this.click( this.squares[index].elem, true );
                     return;
