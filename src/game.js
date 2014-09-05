@@ -264,15 +264,6 @@
                     var choices = [];
                     var user_win = false;
 
-                    // check if user has taken 2 corners and fuck him up with a middle square
-                    if( this.users.user.length == 2 ) {
-                        if( corners.indexOf( this.users.user[0] ) > -1 && corners.indexOf( this.users.user[1] ) > -1 ) {
-                            this.click( this.squares[1].elem, true );
-
-                            return;
-                        }
-                    }
-
                     for( var u = 0; u < WinConditions.length; u++ ) {
                         var matches = 0;
 
@@ -287,6 +278,15 @@
                                     return;
                                 }
                             }
+                        }
+                    }
+
+                    // check if user has taken 2 corners and fuck him up with a middle square
+                    if( this.users.user.length == 2 ) {
+                        if( corners.indexOf( this.users.user[0] ) > -1 && corners.indexOf( this.users.user[1] ) > -1 ) {
+                            this.click( this.squares[1].elem, true );
+
+                            return;
                         }
                     }
 
