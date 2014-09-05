@@ -220,8 +220,8 @@
                 }
                 else {
                     for( var b = 0; b < corners.length; b++ ) {
-                        if( !this.helper.isTaken( this.squares[corners[b]] ) ) {
-                            this.click( this.squares[corners[b]].elem, true );
+                        if( !this.helper.isTaken( this.squares[corners[b] - 1] ) ) {
+                            this.click( this.squares[corners[b] - 1].elem, true );
                             return;
                         }
                     }
