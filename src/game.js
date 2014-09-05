@@ -21,6 +21,7 @@
         [7, 8, 9]
     ];
     var corners = [1, 3, 7, 9];
+    var middles = [2, 4, 6, 8];
     var symbols = {
         user: 'X',
         pc: 'O'
@@ -281,15 +282,18 @@
                         }
                     }
 
-                    // check if user has taken 2 corners and fuck him up with a middle square
+                    // check if user has taken 2 squares out of line fuck him up with a middle square
                     if( this.users.user.length == 2 ) {
-                        if( corners.indexOf( this.users.user[0] ) > -1 && corners.indexOf( this.users.user[1] ) > -1 ) {
-                            this.click( this.squares[1].elem, true );
+                        for( var m = 0; m < middles.length; m++ ) {
+                            if( !this.helper.isTaken( this.squares[middles[m] - 1] ) ) {
+                                this.click( this.squares[middles[m] - 1].elem, true );
 
-                            return;
+                                return;
+                            }
                         }
                     }
 
+                    // check if there is a line worth taking
                     for( var c = 0; c < lines.length; c++ ) {
                         var c_line = lines[c].line;
 
@@ -297,6 +301,15 @@
                             this.takeEmptySquare( c_line );
 
                             return;
+                        }
+                    }
+
+                    // if all fails, take an empty square
+                    for( var s = 0; s < this.squares.length; s++ ) {
+                        if( !this.helper.isTaken( this.squares[s] ) ) {
+                            this.click( this.squares[s].elem, true );
+
+                            return
                         }
                     }
                 }
