@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>The Globe</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmHcYwR0SLNBlj06hnh5NKfpHLo8Fbcko"></script>
+		<style>
+			body {
+				color: #808080;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+
+				background-color: #ffffff;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; 
+                width: 100%;
+				padding: 5px;
+			}
+
+            #locator {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 5px;
+            }
+
+            input {
+                padding: 8px;
+                border-radius: 2px;
+                border: none;
+                background: #fff;
+                color: #333;
+                font-size: 14px;
+            }
+		</style>
+	</head>
+	<body>
+
+        <form id="locator" onsubmit="codeAddress(); return false;">
+            <input id="location" type="text" />
+            <input id="go" type="submit" value="Go!" />
+        </form>
+
+		<div id="container"></div>
+
+        <script src="TweenMax.min.js"></script>
+		<script src="three.min.js"></script>
+        <script src="three.geo.min.js"></script>
+
+        <script src="js/renderers/Projector.js"></script>
+        <script src="js/renderers/CanvasRenderer.js"></script>
+        <script src="js/Detector.js"></script>
+        <script src="js/controls/OrbitControls.js"></script>
+        <script src="js/loaders/STLLoader.js"></script>
+        <script src="threex.rendererstats.js"></script>
+        <script src="fonts/droid/droid_sans_regular.typeface.js"></script>
+        <script src="threeGeoJSON.js"></script>
+        <script src="geojson.js"></script>
+
+		<script src="js/libs/stats.min.js"></script>
+        <script src="script.js"></script>
+
+	</body>
+</html>

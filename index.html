@@ -20,73 +20,7 @@
             font-family: Calibri, Helvetica, Arial;
         }
 
-        .game-ground {
-            margin: 50px auto;
-            width: 252px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .square {
-            line-height: 80px;
-            text-align: center;
-            font-size: 80px;
-            color: #009ade;
-            margin: 2px;
-            cursor: pointer;
-            width: 80px;
-            height: 80px;
-            background: #efefef;
-            border: 1px solid #cecece;
-            border-radius: 5px;
-            float: left;
-        }
-
-        .square:hover {
-            background: #fefefe;
-        }
-
-        .square:nth-child(3n+1) {
-            clear: left;
-        }
-
-        .reset,
-        .result {
-            text-align: center;
-            font-size: 25px;
-            line-height: 40px;
-            background: #efefef;
-            border: 1px solid #cecece;
-            color: #009ade;
-            border-radius: 5px;
-            cursor: pointer;
-            position: absolute;
-            top: 66%;
-            left: 50%;
-            margin-top: -20px;
-            margin-left: -50px;
-            width: 100px;
-            height: 40px;
-        }
-
-        .result {
-            top: 30%;
-            font-size: 22px;
-            left: 0;
-            width: 95%;
-            margin: 0 2.5%;
-            text-align: center;
-        }
-
-        .game-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            border-radius: 5px;
-            background: rgba(0,0,0,.3);
-        }
+        
     </style>
 
     <title>Mapolin.github.io by mapolin</title>
@@ -97,23 +31,37 @@
       <div class="inner">
 
         <header>
-          <h1>Mapolin.github.io</h1>
-          <h2></h2>
+            <h1>Mapolin.github.io</h1>
+            <h2></h2>
         </header>
 
         <section id="downloads" class="clearfix">
-          <a href="https://github.com/mapolin" id="view-on-github" class="button"><span>View on GitHub</span></a>
+            <a href="https://github.com/mapolin" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
 
         <hr>
 
         <section id="main_content">
-          <div class="game-ground">
-          </div>
+            <article>
+                <h1>Tic-Tac-Toe</h1>
+                <p>Simple tic-tac-toe game Player vs PC. Can you beat him?</p>
+                <p><a href="/tic-tac-toe/">View</a></p>
+            </article>
 
-          <script type="text/javascript">
-              var Game = new TicTacToe( '.game-ground' );
-          </script>
+            <article>
+                <h1>WebGL Earth</h1>
+                <p>The Earth visualized using three.js and geojson data. Search field powered by Google Maps. 
+                    <br>
+                    <em>Having a GPU would help a lot :)</em>
+                </p>
+                <p><a href="/the-earth/">View</a></p>
+            </article>
+
+            <article>
+                <h1>Canvas Image Cropping</h1>
+                <p>Testing KineticJS framework...</p>
+                <p><a href="/crop/">View</a></p>
+            </article>
         </section>
 
         <footer>
