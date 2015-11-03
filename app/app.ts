@@ -253,7 +253,6 @@ class AppComponent {
 
     constructor() {
         this.teller = new StoryTeller([this.TellerText], document.querySelector('.story-teller-view'));
-        this.teller.writing_rate = 1;
 
         window.onload = this.teller.Run.call(this.teller);
     }
