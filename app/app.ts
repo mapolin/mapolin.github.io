@@ -189,6 +189,7 @@ class AppComponent {
         width: 100%;
         height: 100%;
         z-index: 999;
+        background: rgba(0,0,0,.7);
 
         display: -webkit-box;
         display: -webkit-flex;
@@ -207,9 +208,8 @@ class AppComponent {
     }
     .bomb:after {
         font-size: 300px;
-        content: "BOOM!";
+        content: "BOOM! .... CLICK ME";
         display: block;
-        background: rgba(255, 0, 0, .7);
         color: red;
         text-align: center;
         -webkit-animation: explosion 10s linear infinite reverse;
@@ -225,7 +225,7 @@ class AppComponent {
      *
      *
      *
-     * I lied... writing it would extremely boring right now
+     * I lied... writing it would be extremely boring right now
      * so instead I included it in the head of our page.
      * 
      *
@@ -243,12 +243,32 @@ class AppComponent {
     \`
 
     ~\`
-    /* Don't worry, I will make sure it doesn't block the view afterwards... */
-    document.querySelector(".bomb").addEventListener("animationEnd", function() {
+    /* 
+     * Don't worry, to remove the bomb just click it...
+     */
+    
+    var elem = document.querySelector(".bomb");
+    
+    elem.addEventListener("click", function() {
         this.style.display = "none";
-    }); ~
+    }, false); ~
 
     \`
+
+    /*
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     * If you want to contact me, press tilde! 
+     */
     `;
 
     constructor() {
