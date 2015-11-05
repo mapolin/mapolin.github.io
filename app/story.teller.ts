@@ -14,7 +14,7 @@ class StoryTeller {
         code: ''
     };
 
-    public writing_rate: number = 1;
+    public writing_rate: number = 16;
     
     _codes: any[];
     _code: any[];

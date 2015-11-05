@@ -11,7 +11,7 @@ var StoryTeller = (function () {
             script: '',
             code: ''
         };
-        this.writing_rate = 1;
+        this.writing_rate = 16;
         this._id = Math.abs(Date.now() * Math.random());
         if (!container) {
             container = document.getElementsByTagName('body')[0];
