@@ -1,9 +1,9 @@
 {
   "generator-react-webpack": {
-    "appName": "react-test",
+    "appName": "concept",
     "style": "scss",
     "cssmodules": true,
-    "postcss": false,
+    "postcss": true,
     "generatedWithVersion": 4
   }
 }

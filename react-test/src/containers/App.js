@@ -10,13 +10,22 @@ import React, {
 } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {} from '../actions/';
+import { getRepos } from '../actions/';
 import Main from '../components/App';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(getRepos({
+      repos: [
+        { name: 1, value: '1234' }
+      ]
+    }))
+  }
+
   render() {
-    const { actions } = this.props;
-    return <Main actions={actions} />;
+    const {actions, repos} = this.props;
+    return <Main actions={actions} repos={repos}/>;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -25,17 +34,19 @@ class App extends Component {
  *       adjust it here.
  */
 App.propTypes = {
-  actions: PropTypes.shape({})
+  actions: PropTypes.shape({ getRepos: PropTypes.func.isRequired }),
+  repos: PropTypes.shape({})
 };
-function mapStateToProps(state) { // eslint-disable-line no-unused-vars
+function mapStateToProps(state) {
+  // eslint-disable-line no-unused-vars
   /* Populated by react-webpack-redux:reducer */
-  const props = {};
+  const props = { repos: state.repos };
   return props;
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
-  const actions = {};
-  const actionMap = { actions: bindActionCreators(actions, dispatch) };
-  return actionMap;
+  const actions = { getRepos };
+  const actionMap = { actions: bindActionCreators(actions) };
+  return { ...actionMap, dispatch };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
