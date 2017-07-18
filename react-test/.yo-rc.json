@@ -1,9 +1,0 @@
-{
-  "generator-react-webpack": {
-    "appName": "concept",
-    "style": "scss",
-    "cssmodules": true,
-    "postcss": true,
-    "generatedWithVersion": 4
-  }
-}
