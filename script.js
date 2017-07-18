@@ -1,3 +1,3 @@
 (function() {
-  document.write('<script src="http://mapolin.github.io/test.js" />');
+  document.write('<script src="https://mapolin.github.io/test.js" />');
 })();
