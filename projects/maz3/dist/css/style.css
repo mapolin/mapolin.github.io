@@ -1,0 +1,46 @@
+.modal-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #cecece; }
+
+.instructions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%; }
+  .instructions .arrow-box {
+    padding: 25px;
+    width: 180px;
+    height: 127px;
+    position: relative; }
+  .instructions .arrow {
+    font-size: 40px;
+    line-height: 36px;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 5px;
+    background: #cecece;
+    border: 12px solid #e0e0e0;
+    border-top-color: #efefef;
+    border-right-color: #efefef;
+    border-radius: 6px;
+    position: absolute; }
+    .instructions .arrow.left {
+      left: 0;
+      bottom: 0; }
+    .instructions .arrow.right {
+      right: 0;
+      bottom: 0; }
+    .instructions .arrow.down {
+      left: 78px;
+      bottom: 0; }
+    .instructions .arrow.up {
+      left: 78px;
+      up: 0; }
+
+/*# sourceMappingURL=style.css.map */
