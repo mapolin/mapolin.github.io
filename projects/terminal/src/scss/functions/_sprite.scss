@@ -1,0 +1,55 @@
+@function divide-escape($a, $b){
+    @if ($b == 0) {
+        @return 0
+    }
+    @return $a/$b;
+}
+
+@function get-image-position-from-sprite($iconName, $sprite-name, $columns, $rows){
+    $index: index($sprite-name,$iconName);
+    $row: ceil($index/$columns);
+    $column: $index % $columns;
+    @return percentage(divide-escape(1,($columns - 1))*($column - 1)) percentage(divide-escape(1,($rows - 1))*($row - 1));
+}
+
+@mixin image-from-sprite($sprite, $name, $size){
+    background-image: url(map_get($sprite,url));
+    background-position: get-image-position-from-sprite(
+        $name,
+        map_get($sprite, names),
+        map_get($sprite, columns),
+        map_get($sprite, rows)
+    );
+    height: $size;
+    width: $size;
+    background-size: auto $size * (map_get($sprite,rows));
+}
+
+/*
+    Usage:
+
+1. create a sprite of square images
+$spriteImageUrl:'http://some.sprite.png';
+
+2. define sass map with the keys specified:
+$spriteMap:(
+    url: $spriteImageUrl, // give the url to the sprite image
+    names: ('facebook', 'twitter', 'youtube'), // names of all of the icons in sprite
+    columns: 7, // define the number of columns in the sprite
+    rows: 2 // define the number of rows in the sprite
+);
+
+3. use it like this:
+.selector {
+    @include image-from-sprite($spriteMap, 'facebook', 60px);
+}
+
+4. or to reduce duplicate code, create a separate mixin for the specific sprite map
+@mixin social-icon($name, $size) {
+    @include image-from-sprite($spriteMap, $name, $size);
+}
+.selector {
+    @include social-icon('facebook', 60px);
+}
+
+*/

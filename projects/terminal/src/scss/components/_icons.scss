@@ -1,0 +1,23 @@
+/*
+  =======================
+  HOW TO USE SPRITE MIXIN
+  =======================
+
+$socialSprite: '#{$assets_path}/social_sprite.png';
+
+$spriteMap:(
+    url: $socialSprite, // give the url to the sprite image
+    names: ('facebook', 'youtube', 'startup'), // names of all of the icons in sprite
+    columns: 3, // define the number of columns in the sprite
+    rows: 1 // define the number of rows in the sprite
+);
+
+@mixin social-icon($name, $size: 18px) {
+    @include image-from-sprite($spriteMap, $name, $size);
+}
+
+.facebook {
+  @include social-icon('facebook');
+}
+
+*/

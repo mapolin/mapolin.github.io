@@ -1,0 +1,123 @@
+.terminal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #010101;
+  top: 0;
+  left: 0;
+
+  .text-panel {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 30px;
+    padding: 15px;
+    height: 160px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid #333;
+    height: 30px;
+    line-height: 30px;
+    padding: 2px 10px;
+    vertical-align: middle;
+
+    &:focus {
+      outline: none;
+
+      &:after {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 2px;
+        content: '';
+
+        width: 8px;
+        height: 100%;
+        background: #ffd900;
+      }
+    }
+  }
+
+  .text-line {
+    margin: 5px 0;
+    padding: 5px 20px;
+    border-bottom: 1px dashed #444;
+    position: relative;
+
+    &.invalid {
+      color: #e44;
+
+      &:before {
+        border-top-color: #e44;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: -10px;
+      border-top: 10px solid #ffd900;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+
+      transform: rotate(-90deg);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 9px;
+      border-top: 9px solid #010101;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.command-result {
+  width: 90%;
+  margin: 0 auto;
+  height: calc(100% - 190px);
+  overflow: hidden;
+  position: relative;
+
+  .command-name {
+    position: absolute;
+    height: 180px;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .command-text {
+    position: absolute;
+    height: calc(100% - 220px);
+    width: 100%;
+    top: 190px;
+    left: 0;
+    overflow-y: auto;
+
+    pre:last-child {
+      margin-top: 20px;
+    }
+  }
+
+  .command-pager {
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}

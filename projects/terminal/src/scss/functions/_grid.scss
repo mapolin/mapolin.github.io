@@ -1,0 +1,46 @@
+/*
+    Usage:
+
+    @fluid-grid(12, 20px) will generate 12 column grid with 20px gutter
+
+    .fluid-row - class for grid rows
+    .fluid-column-N - class for grid columns, where N is 1-2-3-4-etc and represent part of the entire grid in % (1/12, 3/12 etc)
+*/
+@mixin generate-columns($prefix, $columns, $gutter) {
+    @for $i from 1 through $columns {
+        $width: percentage($i/$columns);
+        .#{$prefix}-column-#{$i} {
+            @if $gutter != 0 {
+                width: calc(#{$width} - #{$gutter});
+                margin-left: $gutter;
+            }
+            @else {
+                width: $width;
+            }
+        }
+    }
+}
+@mixin fluid-grid($columns: 12, $gutter: 0) {
+    .fluid-row {
+        @include clearfix();
+
+        [class^="fluid-column-"] {
+            float: left;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    @include generate-columns('fluid', $columns, $gutter);
+}
+
+@mixin flex-grid($columns: 12, $gutter: 0) {
+    .flex-row {
+        @include flex-display();
+        @include clearfix();
+    }
+
+    @include generate-columns('flex', $columns, $gutter);
+}

@@ -1,0 +1,12 @@
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.half-width {
+  width: 50%;
+
+  @include respond-to('small') {
+    width: 100%;
+  }
+}
