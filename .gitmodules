@@ -1,0 +1,3 @@
+[submodule "team-generator"]
+	path = team-generator
+	url = git@github.com:mapolin/team-generator.git
